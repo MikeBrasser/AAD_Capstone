@@ -7,10 +7,33 @@
     <string name="login">Login</string>
     <string name="email">E-mail</string>
     <string name="password">Password</string>
+    <string name="registerNow">Don\'t have an account yet?</string>
+    <string name="singUp">Sign up</string>
+    <string name="register">Register</string>
+    <string name="firstName">First name</string>
+    <string name="lastName">Last name</string>
+
+    <!-- Home page -->
+    <string name="pickDate">Pick a date</string>
 
     <!-- Bottom Nav Menu -->
     <string name="menu_home">Home</string>
     <string name="menu_categories">Categories</string>
     <string name="menu_notifications">Notifications</string>
     <string name="menu_settings">Settings</string>
+
+    <!-- Placeholders -->
+    <string name="placeholderCategory">MovieFans</string>
+    <string name="placeholderTime">5 hours ago</string>
+    <string name="placeholderPostedBy">Posted by Egba559</string>
+    <string name="placeholderTitle">What is the best horror movie that came out in 2020?</string>
+    <string name="placeholderNumber">51</string>
+    <string name="placeholderNumber2">12</string>
+    <string name="upvote">Upvote</string>
+    <string name="downvote">downvote</string>
+    <string name="numbercomments">numberComments</string>
+    <string name="add_a_comment">Add a comment</string>
+    <string name="enter">Enter</string>
+    <string name="already_have_an_account_log_in_now">Already have an account? Login instead</string>
+
 </resources>

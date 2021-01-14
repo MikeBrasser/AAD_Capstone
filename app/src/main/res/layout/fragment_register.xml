@@ -37,7 +37,7 @@
             android:layout_below="@+id/separationLine"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="@string/login"
+            android:text="@string/register"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -51,13 +51,13 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/username"
+            android:id="@+id/firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_username"
+                android:id="@+id/text_input_first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
@@ -65,7 +65,59 @@
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailInput"
+                    android:id="@+id/firstNameInputRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/firstName"
+                    android:inputType="textCapWords"
+                    android:textSize="24sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/firstName">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_last"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/lastNameInputRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lastName"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lastName">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailInputRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
@@ -77,45 +129,45 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/password"
+            android:id="@+id/passwordR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/username">
+            android:layout_below="@+id/email">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_password"
-                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordInput"
+                    android:id="@+id/passwordInputRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textSize="20sp" />
+                    android:textSize="24sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/relativeButton"
+            android:id="@+id/relativeButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/password">
+            android:layout_below="@+id/passwordR">
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:text="@string/login"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:background="@color/colorMainTheme"/>
@@ -123,40 +175,19 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/relativeButton"
-            android:layout_alignParentBottom="true"
-            android:gravity="bottom|center">
+            android:layout_below="@+id/relativeButton2"
+            android:layout_marginTop="10dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/loginRedirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/registerLinkLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registerNow"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/registerButtonLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="@string/singUp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:background="@color/colorMainTheme"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
+                android:layout_centerHorizontal="true"
+                android:text="@string/already_have_an_account_log_in_now"
+                android:textSize="19sp"
+                android:textColor="@color/black" />
 
         </RelativeLayout>
 

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/card"
+    android:minHeight="100dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/okey">
+
+            <TextView
+                android:id="@+id/tvCategoryPost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textColor="@color/black"
+                android:text="@string/placeholderCategory"
+                android:layout_weight="0.9"/>
+
+            <TextView
+                android:id="@+id/tvGamePlatforms"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholderTime" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPostedBy"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholderPostedBy"
+            android:layout_below="@id/okey"/>
+
+        <View
+            android:id="@+id/separationLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/tvPostedBy"
+            android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvPostTitle"
+            android:textSize="19sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholderTitle"
+            android:layout_below="@id/separationLine"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"/>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/tvPostTitle"
+            android:layout_marginTop="5dp">
+
+            <ImageButton
+                android:id="@+id/upvoteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_upward"
+                android:contentDescription="@string/upvote"
+                android:background="@color/white"/>
+
+            <TextView
+                android:id="@+id/likeRatio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholderNumber"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                />
+
+            <ImageButton
+                android:id="@+id/downvoteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_downward"
+                android:contentDescription="@string/downvote"
+                android:background="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/numberComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholderNumber2"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="6dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_bubble"
+                    android:background="@color/white"
+                    android:contentDescription="@string/numbercomments" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

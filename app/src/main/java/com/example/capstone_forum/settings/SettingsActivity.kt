@@ -1,4 +1,6 @@
 package com.example.capstone_forum.settings
 
-class SettingsActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class SettingsActivity : AppCompatActivity() {
 }

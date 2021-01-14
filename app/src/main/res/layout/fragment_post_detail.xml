@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorGrayWhiteTheme">
+
+            <LinearLayout
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <SearchView
+                    android:id="@+id/searchWindow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.66"
+                    android:alwaysDrawnWithCache="true"
+                    android:iconifiedByDefault="false"
+                    android:paddingTop="10dp"
+                    android:queryHint="Search" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/pickDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.18"
+                    android:backgroundTint="@color/colorMainTheme"
+                    app:srcCompat="@drawable/ic_calendar"
+                    android:tint="@color/white"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separationLine"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorMainTheme"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/search"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topBar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPosts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rvPosts"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/addCommentBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/rvComments">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_a_comment"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:layout_weight="0.9"/>
+
+                <ImageButton
+                    android:id="@+id/commentBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_enter"
+                    android:tint="@color/black"
+                    android:contentDescription="@string/enter" />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,4 +1,6 @@
 package com.example.capstone_forum.notification
 
-class NotificationActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class NotificationActivity : AppCompatActivity() {
 }

@@ -1,4 +1,6 @@
 package com.example.capstone_forum.categories
 
-class CategoriesActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class CategoriesActivity : AppCompatActivity() {
 }
