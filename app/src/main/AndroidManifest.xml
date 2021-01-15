@@ -26,22 +26,22 @@
         <activity
             android:name=".home.HomeActivity"
             android:label="Home"
-            android:theme="@style/Theme.Capstone_Forum.NoActionBar" />
+            android:theme="@style/Theme.Capstone_Forum" />
 
         <activity
             android:name=".categories.CategoriesActivity"
             android:label="Categories"
-            android:theme="@style/Theme.Capstone_Forum.NoActionBar" />
+            android:theme="@style/Theme.Capstone_Forum" />
 
         <activity
-            android:name=".notification.NotificationActivity"
+            android:name=".notifications.NotificationsActivity"
             android:label="Notifications"
-            android:theme="@style/Theme.Capstone_Forum.NoActionBar" />
+            android:theme="@style/Theme.Capstone_Forum" />
 
         <activity
             android:name=".settings.SettingsActivity"
             android:label="Settings"
-            android:theme="@style/Theme.Capstone_Forum.NoActionBar" />
+            android:theme="@style/Theme.Capstone_Forum" />
 
         <activity
             android:name=".account.AccountActivity"

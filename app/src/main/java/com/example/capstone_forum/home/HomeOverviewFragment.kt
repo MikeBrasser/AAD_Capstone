@@ -3,9 +3,9 @@ package com.example.capstone_forum.home
 import androidx.fragment.app.Fragment
 import com.example.capstone_forum.Post
 
-class HomeFragment : Fragment() {
+class HomeOverviewFragment : Fragment() {
 
     private val posts = arrayListOf<Post>()
-    private val homeFragmentAdapter = HomeFragmentAdapter(posts)
+    private val homeFragmentAdapter = HomeOverviewAdapter(posts)
 
 }

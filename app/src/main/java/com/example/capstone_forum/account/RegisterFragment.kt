@@ -12,6 +12,7 @@ import com.example.capstone_forum.R
 import com.example.capstone_forum.account.model.User
 import com.example.capstone_forum.home.HomeActivity
 import com.example.capstone_forum.viewmodel.UserViewModel
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -23,6 +24,9 @@ class RegisterFragment : Fragment() {
 
     private lateinit var firstName: String
     private lateinit var lastName: String
+
+    private lateinit var firstNameInput: TextInputEditText
+    private lateinit var lastNameInput: TextInputEditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +43,8 @@ class RegisterFragment : Fragment() {
     }
 
     private fun initViews(view: View) {
-        firstName = view.findViewById(R.id.firstNameInputRegister)
-        lastName = view.findViewById(R.id.lastNameInputRegister)
-
-
+        firstNameInput = view.findViewById(R.id.firstNameInputRegister)
+        lastNameInput = view.findViewById(R.id.lastNameInputRegister)
 
         loginRedirect.setOnClickListener {
             toLoginPage()
@@ -72,7 +74,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun checkFirstNameField(): Boolean {
-        firstName = firstNameInputRegister.text.toString()
+        firstName = firstNameInput.text.toString()
 
         return if (firstName.isBlank()) {
             firstNameInputRegister.error = "This field can't be empty!"
@@ -83,7 +85,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun checkLastNameField(): Boolean {
-        lastName = lastNameInputRegister.text.toString()
+        lastName = lastNameInput.text.toString()
 
         return if (lastName.isBlank()) {
             lastNameInputRegister.error = "This field can't be empty!"

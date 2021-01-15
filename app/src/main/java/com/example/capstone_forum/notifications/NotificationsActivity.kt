@@ -1,31 +1,29 @@
-package com.example.capstone_forum
+package com.example.capstone_forum.notifications
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.capstone_forum.R
 import com.example.capstone_forum.categories.CategoriesActivity
 import com.example.capstone_forum.home.HomeActivity
-import com.example.capstone_forum.notifications.NotificationsActivity
 import com.example.capstone_forum.settings.SettingsActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_categories.*
+import kotlinx.android.synthetic.main.activity_notifications.*
 
-class MainActivity : AppCompatActivity() {
+class NotificationsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initViews()
-    }
+        setContentView(R.layout.activity_notifications)
 
-    private fun initViews() {
         initNav()
     }
 
     private fun initNav() {
         //Set current active menu item
-        bottom_navigation_menu.menu.getItem(0).isChecked = true
+        bottom_nav_notifications.menu.getItem(2).isChecked = true
 
-        bottom_navigation_menu.setOnNavigationItemSelectedListener {
+        bottom_nav_notifications.setOnNavigationItemSelectedListener {
             when (it.toString()) {
                 "Home" -> startActivity(Intent(this, HomeActivity::class.java))
                 "Categories" -> startActivity(Intent(this, CategoriesActivity::class.java))

@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 
-class HomeFragmentAdapter(private val posts: List<Post>):
-        RecyclerView.Adapter<HomeFragmentAdapter.ViewHolder>() {
+class HomeOverviewAdapter(private val posts: List<Post>):
+        RecyclerView.Adapter<HomeOverviewAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun init(post: Post) {

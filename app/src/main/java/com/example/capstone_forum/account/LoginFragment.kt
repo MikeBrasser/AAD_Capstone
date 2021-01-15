@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -19,6 +20,8 @@ class LoginFragment : Fragment() {
 
     private lateinit var fragmentTransaction: FragmentTransaction
 
+    private lateinit var link: TextView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,12 +33,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
+        initViews(view)
     }
 
-    private fun initViews() {
-
-        registerLinkLogin.setOnClickListener {
+    private fun initViews(view: View) {
+        link = view.findViewById(R.id.registerButtonLogin)
+        link.setOnClickListener {
             loadRegisterPage()
         }
 

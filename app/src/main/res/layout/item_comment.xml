@@ -8,10 +8,11 @@
     app:cardCornerRadius="8dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    android:id="@+id/card"
-    android:minHeight="100dp">
+    android:id="@+id/cardComment"
+    android:minHeight="80dp">
 
     <RelativeLayout
+        android:id="@+id/wholeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp" >
@@ -23,16 +24,17 @@
             android:id="@+id/okey">
 
             <TextView
-                android:id="@+id/tvCategoryPost"
+                android:id="@+id/tvUser"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
-                android:text="@string/placeholderCategory"
-                android:layout_weight="0.9"/>
+                android:text="@string/fullNameString"
+                android:layout_weight="0.9"
+                android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvCreatedAt"
+                android:id="@+id/tvPostedAt"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,42 +43,40 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvPostedBy"
-            android:textSize="15sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholderPostedBy"
-            android:layout_below="@id/okey"/>
-
-        <View
-            android:id="@+id/separationLine"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="3dp"
-            android:layout_below="@+id/tvPostedBy"
-            android:background="@color/black"/>
-
-        <TextView
-            android:id="@+id/tvPostTitle"
+            android:id="@+id/tvComment"
             android:textSize="19sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholderTitle"
-            android:layout_below="@id/separationLine"
-            android:layout_marginTop="5dp"
+            android:text="@string/placeholderComment"
+            android:layout_below="@id/okey"
+            android:layout_marginTop="1dp"
             android:textColor="@color/black"/>
 
-
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/tvPostTitle"
-            android:layout_marginTop="5dp">
+            android:layout_below="@id/tvComment"
+            android:layout_marginTop="2dp"
+            android:gravity="end">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginEnd="30dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_reply"
+                    android:background="@color/white"
+                    android:contentDescription="@string/numbercomments" />
+
+            </LinearLayout>
 
             <ImageButton
-                android:id="@+id/upvoteBtn"
+                android:id="@+id/upvoteBtnComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_upward"
@@ -84,7 +84,7 @@
                 android:background="@color/white"/>
 
             <TextView
-                android:id="@+id/likeRatio"
+                android:id="@+id/likeRatioComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholderNumber"
@@ -95,36 +95,14 @@
                 />
 
             <ImageButton
-                android:id="@+id/downvoteBtn"
+                android:id="@+id/downvoteBtnComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_downward"
                 android:contentDescription="@string/downvote"
                 android:background="@color/white"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginStart="20dp">
 
-                <TextView
-                    android:id="@+id/numberComments"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/placeholderNumber2"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_marginEnd="6dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_chat_bubble"
-                    android:background="@color/white"
-                    android:contentDescription="@string/numbercomments" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/firstName"
                     android:inputType="textCapWords"
-                    android:textSize="24sp" />
+                    android:textSize="22sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/lastName"
                     android:inputType="textCapWords"
-                    android:textSize="20sp" />
+                    android:textSize="22sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:textSize="20sp" />
+                    android:textSize="22sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textSize="24sp" />
+                    android:textSize="22sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +169,7 @@
                 android:layout_marginEnd="10dp"
                 android:text="@string/register"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:background="@color/colorMainTheme"/>
 
         </RelativeLayout>

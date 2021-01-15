@@ -35,5 +35,10 @@
     <string name="add_a_comment">Add a comment</string>
     <string name="enter">Enter</string>
     <string name="already_have_an_account_log_in_now">Already have an account? Login instead</string>
+    <string name="button_info">info</string>
+    <string name="logged_in_as">Logged in as:</string>
+    <string name="fullNameString">%s %s</string>
+    <string name="logout_btn">Log out</string>
+    <string name="placeholderComment"><![CDATA[Taken 3 & Red 2]]></string>
 
 </resources>

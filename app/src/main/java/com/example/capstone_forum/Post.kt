@@ -3,13 +3,12 @@ package com.example.capstone_forum
 import android.os.Parcel
 import android.os.Parcelable
 
-class Post(var id: Int, var category: String, var creator: String, var timeCreated: Long,
+class Post(var category: String, var creator: String, var timeCreated: Long,
            var title: String, var likeRatio: Int) : Parcelable, Comparable<Post> {
 
-    constructor() : this(0, "", "", 0, "", 0)
+    constructor() : this("", "", 0, "", 0)
 
     constructor(parcel: Parcel) : this(
-            parcel.readInt(),
             parcel.readString()!!,
             parcel.readString()!!,
             parcel.readLong(),
@@ -17,7 +16,6 @@ class Post(var id: Int, var category: String, var creator: String, var timeCreat
             parcel.readInt())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(category)
         parcel.writeString(creator)
         parcel.writeLong(timeCreated)
