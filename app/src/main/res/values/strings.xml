@@ -40,5 +40,10 @@
     <string name="fullNameString">%s %s</string>
     <string name="logout_btn">Log out</string>
     <string name="placeholderComment"><![CDATA[Taken 3 & Red 2]]></string>
+    <string name="addpost">addPost</string>
+    <string name="tiTitle">Title</string>
+    <string name="Soccer">Soccer</string>
+    <string name="fabSend" />
+    <string name="tiDescription">Description (optional)</string>
 
 </resources>

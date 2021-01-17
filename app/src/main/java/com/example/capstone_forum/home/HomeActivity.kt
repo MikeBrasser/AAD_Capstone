@@ -2,7 +2,9 @@ package com.example.capstone_forum.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.categories.CategoriesActivity
 import com.example.capstone_forum.notifications.NotificationsActivity
@@ -13,10 +15,12 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var homeOverviewFragment: HomeOverviewFragment
     private lateinit var homeDetailFragment: HomeDetailFragment
+    private lateinit var homeMakePostFragment: HomeMakePostFragment
 
     companion object {
-        const val HOME_FRAGMENT = "HOME_FRAGMENT"
-        const val HOME_FRAGMENT_DETAIL = "HOME_FRAGMENT_DETAIL"
+        const val HOME_OVERVIEW_FRAGMENT = "HOME_OVERVIEW_FRAGMENT"
+        const val HOME_DETAIL_FRAGMENT = "HOME_DETAIL_FRAGMENT"
+        const val HOME_MAKE_POST_FRAGMENT = "HOME_MAKE_POST_FRAGMENT"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,12 +35,13 @@ class HomeActivity : AppCompatActivity() {
         homeOverviewFragment = HomeOverviewFragment()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        supportFragmentManager.beginTransaction().setReorderingAllowed(true)
-            .replace(R.id.home_target, homeOverviewFragment, HOME_FRAGMENT)
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.home_target, homeOverviewFragment, HOME_OVERVIEW_FRAGMENT)
             .commit()
     }
 
-    private fun showHomeFragment() {
+    fun showHomeFragment() {
         homeOverviewFragment = HomeOverviewFragment()
 
         supportActionBar?.title = "Home"
@@ -47,19 +52,33 @@ class HomeActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun showHomeFragmentDetail() {
-        homeDetailFragment = HomeDetailFragment()
+    fun showHomeFragmentDetail(post: Post) {
+        homeDetailFragment = HomeDetailFragment(post)
 
         supportActionBar?.title = "Post"
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.home_target, homeOverviewFragment)
+            .setReorderingAllowed(true)
+            .replace(R.id.home_target, homeOverviewFragment, HOME_DETAIL_FRAGMENT)
+            .addToBackStack(HOME_OVERVIEW_FRAGMENT)
+            .commit()
+    }
+
+    fun showHomeMakePostFragment() {
+        homeMakePostFragment = HomeMakePostFragment()
+
+        supportActionBar?.title = "Make a Post"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        supportFragmentManager.beginTransaction()
+            .setReorderingAllowed(true)
+            .replace(R.id.home_target, homeMakePostFragment, HOME_MAKE_POST_FRAGMENT)
+            .addToBackStack(HOME_OVERVIEW_FRAGMENT)
             .commit()
     }
 
     private fun initNav() {
-        //Set current active menu item
         bottom_nav_home.menu.getItem(0).isChecked = true
 
         bottom_nav_home.setOnNavigationItemSelectedListener {
@@ -73,6 +92,11 @@ class HomeActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
             false
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        showHomeFragment()
+        return true
     }
 
 }
