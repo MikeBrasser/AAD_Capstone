@@ -1,6 +1,8 @@
 package com.example.capstone_forum.settings
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,7 +46,19 @@ class SettingsOverviewFragment : Fragment() {
         }
 
         logOutBtn.setOnClickListener {
-            logOut()
+            val popUp = AlertDialog.Builder(context)
+            popUp.setTitle("Logout")
+            popUp.setMessage("Are you sure you want to logout?")
+
+            popUp.setPositiveButton("Yes, I'm sure") { _: DialogInterface, _: Int ->
+                logOut()
+            }
+
+            popUp.setNegativeButton("No, take me back") { dialogInterface: DialogInterface, _: Int ->
+                dialogInterface.cancel()
+            }
+
+           .create().show()
         }
     }
 

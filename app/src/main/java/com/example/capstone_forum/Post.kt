@@ -5,10 +5,10 @@ import android.os.Parcelable
 
 class Post(
     var id: String, var category: String, var creator: String, var timeCreated: Long,
-    var title: String, var description: String, var likeRatio: Int
+    var title: String, var description: String, var likeRatio: Int, var imageUrl: String?
 ) : Parcelable, Comparable<Post> {
 
-    constructor() : this("" , "", "", 0, "", "", 0)
+    constructor() : this("" , "", "", 0, "", "", 0, "")
 
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -17,7 +17,9 @@ class Post(
         parcel.readLong(),
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readString()!!
+
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -28,6 +30,7 @@ class Post(
         parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeInt(likeRatio)
+        parcel.writeString(imageUrl)
     }
 
     override fun describeContents(): Int {

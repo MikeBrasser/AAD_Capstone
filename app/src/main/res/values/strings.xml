@@ -46,5 +46,9 @@
     <string name="fabSend" />
     <string name="tiDescription">Description (optional)</string>
     <string name="current_available_categories">Current available categories:</string>
+    <string name="deleteBtn">deletebtn</string>
+    <string name="new_post_in_s">New post in: %s</string>
+    <string name="if_there_was_a_movie_you_could_delete_forever_which_one_would_it_be">If there was a movie you could delete forever, which one would it be?</string>
+    <string name="posted_by_s">posted by: %s</string>
 
 </resources>

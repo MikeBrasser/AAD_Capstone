@@ -65,7 +65,7 @@
             android:layout_below="@id/topBar">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPosts"
+                android:id="@+id/rvPostsDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -76,7 +76,7 @@
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rvPosts"
+                android:layout_below="@id/rvPostsDetail"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"/>

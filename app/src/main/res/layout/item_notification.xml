@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="1dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:minHeight="100dp"
+    android:backgroundTint="@color/colorMainTheme">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp" >
+
+        <TextView
+            android:id="@+id/notificationNewPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_post_in_s"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/notificationTitle"
+            android:layout_below="@id/notificationNewPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/if_there_was_a_movie_you_could_delete_forever_which_one_would_it_be"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/notificationPostedBy"
+            android:layout_below="@id/notificationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/posted_by_s"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

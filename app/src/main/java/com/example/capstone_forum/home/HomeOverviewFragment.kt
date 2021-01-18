@@ -12,13 +12,15 @@ import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.rvPosts
+import kotlinx.android.synthetic.main.fragment_post_detail.*
 
 class HomeOverviewFragment : Fragment() {
 
     private val postViewModel: PostViewModel by activityViewModels()
 
     private val posts = arrayListOf<Post>()
-    private val homeFragmentAdapter = HomeOverviewAdapter(posts)
+    private var homeFragmentAdapter = HomeOverviewAdapter(posts)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,13 +57,15 @@ class HomeOverviewFragment : Fragment() {
     private fun dataInput() {
         postViewModel.getAllPosts()
 
-        postViewModel.posts.observe(viewLifecycleOwner) {
+        postViewModel.posts.observe(viewLifecycleOwner) { allPosts ->
             posts.clear()
-            posts.addAll(posts)
-            posts.sortBy { allPosts -> allPosts.timeCreated }
+            posts.addAll(allPosts)
+            posts.sortBy { allPostss -> allPostss.timeCreated }
+            homeFragmentAdapter.notifyDataSetChanged()
+
         }
 
-        homeFragmentAdapter.notifyDataSetChanged()
+
     }
 
 }
