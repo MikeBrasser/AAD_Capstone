@@ -64,7 +64,7 @@ class RegisterFragment : Fragment() {
                 passwordInputRegister.text.toString()
             ).addOnCompleteListener { register ->
                 if (register.isSuccessful) {
-                    userViewModel.setUser(firebaseAuth.currentUser!!.uid, User(0, firstName, lastName))
+                    userViewModel.setUser(firebaseAuth.currentUser!!.uid, User(firstName, lastName))
                     toHome()
                 } else {
                     Toast.makeText(context, register.exception!!.message, Toast.LENGTH_SHORT).show()

@@ -1,5 +1,6 @@
 package com.example.capstone_forum.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,6 @@ import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.rvPosts
-import kotlinx.android.synthetic.main.fragment_post_detail.*
 
 class HomeOverviewFragment : Fragment() {
 
@@ -64,8 +63,6 @@ class HomeOverviewFragment : Fragment() {
             homeFragmentAdapter.notifyDataSetChanged()
 
         }
-
-
     }
 
 }

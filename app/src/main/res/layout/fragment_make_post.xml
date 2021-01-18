@@ -29,7 +29,6 @@
                 android:id="@+id/tiTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="1"
                 android:gravity="top"
                 android:hint="@string/tiTitle" />
 
@@ -43,6 +42,20 @@
                 android:gravity="top"
                 android:hint="@string/tiDescription"
                 android:textSize="15sp"/>
+
+            <ImageButton
+                android:id="@+id/addPhotoBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_a_photo"
+                android:backgroundTint="@color/ghostWhite"
+                android:contentDescription="@string/addphotobtn" />
+
+            <ImageView
+                android:id="@+id/imagePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/imagephoto" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/srCategory"

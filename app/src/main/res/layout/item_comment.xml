@@ -24,7 +24,7 @@
             android:id="@+id/okey">
 
             <TextView
-                android:id="@+id/tvUser"
+                android:id="@+id/tvUserComment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -34,7 +34,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvPostedAt"
+                android:id="@+id/tvPostedAtComment"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,21 +59,6 @@
             android:layout_below="@id/tvComment"
             android:layout_marginTop="2dp"
             android:gravity="end">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginEnd="30dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_reply"
-                    android:background="@color/white"
-                    android:contentDescription="@string/numbercomments" />
-
-            </LinearLayout>
 
             <ImageButton
                 android:id="@+id/upvoteBtnComment"

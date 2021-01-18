@@ -8,19 +8,21 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/gray"
-        android:layout_marginTop="5dp">
+        android:layout_height="50dp"
+        android:background="@color/colorGrayWhiteTheme">
 
         <TextView
             android:id="@+id/availableCatText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
-            android:paddingStart="5dp"
             android:text="@string/current_available_categories"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:textSize="28sp"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            android:textColor="@color/colorMainTheme"/>
 
     </RelativeLayout>
 
@@ -32,14 +34,13 @@
             android:id="@+id/separationLineCategory"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/black" />
+            android:background="@color/colorMainTheme" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategories"

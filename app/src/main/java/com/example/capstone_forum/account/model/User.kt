@@ -3,18 +3,16 @@ package com.example.capstone_forum.account.model
 import android.os.Parcel
 import android.os.Parcelable
 
-class User(var id: Int, var firstName: String, var lastName: String) : Parcelable {
+class User(var firstName: String, var lastName: String) : Parcelable {
 
-    constructor() : this(0,"","")
+    constructor() : this("","")
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readString().toString(),
         parcel.readString().toString()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(firstName)
         parcel.writeString(lastName)
     }

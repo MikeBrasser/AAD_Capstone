@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/separationLine"
+                android:id="@+id/separationLineBar"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/colorMainTheme"
@@ -64,56 +64,196 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/topBar">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPostsDetail"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="5dp" />
+                app:cardElevation="2dp"
+                app:cardCornerRadius="8dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                android:id="@+id/detailCard"
+                android:minHeight="100dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/Title">
+
+                        <TextView
+                            android:id="@+id/tvCategoryPost"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="24sp"
+                            android:textColor="@color/black"
+                            android:text="@string/placeholderCategory"
+                            android:layout_weight="0.9"/>
+
+                        <TextView
+                            android:id="@+id/tvCreatedAt"
+                            android:textSize="15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/placeholderTime" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvPostedBy"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholderPostedBy"
+                        android:layout_below="@id/Title"/>
+
+                    <View
+                        android:id="@+id/separationLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@+id/tvPostedBy"
+                        android:background="@color/black"/>
+
+                    <TextView
+                        android:id="@+id/tvPostTitle"
+                        android:textSize="19sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholderTitle"
+                        android:layout_below="@id/separationLine"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvPostDescription"
+                        android:textSize="17sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholderDescription"
+                        android:layout_below="@id/tvPostTitle"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvPostDescription"
+                        android:contentDescription="@string/optionalimage" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/tvPostDescription"
+                        android:layout_marginTop="5dp">
+
+                        <ImageButton
+                            android:id="@+id/upvoteBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_upward"
+                            android:contentDescription="@string/upvote"
+                            android:background="@color/white"/>
+
+                        <TextView
+                            android:id="@+id/tvLikeRatio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/placeholderNumber"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/downvoteBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_downward"
+                            android:contentDescription="@string/downvote"
+                            android:background="@color/white"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="20dp">
+
+                            <TextView
+                                android:id="@+id/tvNumberComments"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/placeholderNumber2"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:layout_marginEnd="6dp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_chat_bubble"
+                                android:background="@color/white"
+                                android:contentDescription="@string/numbercomments" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rvPostsDetail"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="5dp"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-            <LinearLayout
-                android:id="@+id/addCommentBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/add_a_comment"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:layout_weight="0.9"/>
-
-                <ImageButton
-                    android:id="@+id/commentBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_enter"
-                    android:tint="@color/black"
-                    android:contentDescription="@string/enter" />
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_below="@id/detailCard"
+                android:layout_marginTop="5dp" />
 
         </RelativeLayout>
 
     </RelativeLayout>
 
-</ScrollView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/addCommentBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/white">
+
+            <EditText
+                android:id="@+id/addCommentInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_a_comment"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:layout_weight="0.9"/>
+
+            <ImageButton
+                android:id="@+id/commentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_enter"
+                android:tint="@color/black"
+                android:contentDescription="@string/enter" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

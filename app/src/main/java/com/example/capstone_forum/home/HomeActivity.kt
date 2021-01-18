@@ -1,5 +1,6 @@
 package com.example.capstone_forum.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -60,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
             .setReorderingAllowed(true)
-            .replace(R.id.home_target, homeOverviewFragment, HOME_DETAIL_FRAGMENT)
+            .replace(R.id.home_target, homeDetailFragment, HOME_DETAIL_FRAGMENT)
             .addToBackStack(HOME_OVERVIEW_FRAGMENT)
             .commit()
     }

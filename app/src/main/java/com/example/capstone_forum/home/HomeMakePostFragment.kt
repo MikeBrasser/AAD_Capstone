@@ -38,9 +38,10 @@ class HomeMakePostFragment : Fragment() {
         .getReference("post-images/")
 
     private var username = ""
+    private var uriGlobLink = ""
 
     private val spinnerList =
-        arrayListOf("Soccer_fanatics", "Car_enthusiasts", "Movie_fans", "Computer_nerds")
+        arrayListOf("Soccer fanatics", "Car enthusiasts", "Movie fans", "Computer nerds")
 
     private var firebase: FirebaseAuth = FirebaseAuth.getInstance()
     private var firebaseDB = FirebaseDatabase.getInstance().reference
@@ -69,14 +70,15 @@ class HomeMakePostFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(resultCode == -1) {
-            if(requestCode == 1) {
+        if (resultCode == -1) {
+            if (requestCode == 1) {
                 val selectedImageUri = data?.data
 
-                val bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, selectedImageUri)
-//                profileHeader.setImageBitmap(bitmap)
+                val bitmap =
+                    MediaStore.Images.Media.getBitmap(context?.contentResolver, selectedImageUri)
+                imagePhoto.setImageBitmap(bitmap)
 
-                if(selectedImageUri != null) {
+                if (selectedImageUri != null) {
                     saveImageToFirebase(selectedImageUri)
                 }
             }
@@ -91,15 +93,17 @@ class HomeMakePostFragment : Fragment() {
         val reference = storageReference.child(UUID.randomUUID().toString())
         reference.putFile(uri).addOnSuccessListener {
             reference.downloadUrl.addOnSuccessListener { uriLink ->
-//                currentUser.userImage = uriLink.toString()
+                postViewModel.post.observe(viewLifecycleOwner) {
+                    it.imageUrl = uriLink.toString()
+                    uriGlobLink = uriLink.toString()
+                }
 
-//                saveUserImage()
                 progressDialog.dismiss()
             }
         }
     }
 
-//    private fun saveUserImage() { //TODO: User to post, Import Glide, Current post image update,
+//    private fun saveImage() {
 //        userViewModel.updateUser(firebaseUser!!.uid, currentUser)
 //    }
 
@@ -113,8 +117,7 @@ class HomeMakePostFragment : Fragment() {
     }
 
     private fun initViews() {
-        srCategory.adapter =
-            ArrayAdapter<String>(requireContext(), R.layout.dropdown_spinner, spinnerList)
+        srCategory.adapter = ArrayAdapter(requireContext(), R.layout.dropdown_spinner, spinnerList)
 
         fabMakePost.setOnClickListener {
             if (inputValidation()) {
@@ -124,7 +127,7 @@ class HomeMakePostFragment : Fragment() {
             }
         }
 
-        addImageBtn.setOnClickListener {
+        addPhotoBtn.setOnClickListener {
             pickFromGallery()
         }
     }
@@ -140,9 +143,9 @@ class HomeMakePostFragment : Fragment() {
             System.currentTimeMillis(),
             tiTitle.text.toString(),
             tiDescription.text.toString(),
-            0,
+            0, uriGlobLink
 
-        )
+            )
 
         postViewModel.createPost(newPost)
 

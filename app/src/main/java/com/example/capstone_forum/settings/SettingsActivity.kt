@@ -28,7 +28,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun initViews() {
         settingsOverviewFragment = SettingsOverviewFragment()
 
-        supportActionBar?.title = "Categories"
+        supportActionBar?.title = "Settings"
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportFragmentManager.beginTransaction()
             .setReorderingAllowed(true)
