@@ -45,5 +45,6 @@
     <string name="Soccer">Soccer</string>
     <string name="fabSend" />
     <string name="tiDescription">Description (optional)</string>
+    <string name="current_available_categories">Current available categories:</string>
 
 </resources>

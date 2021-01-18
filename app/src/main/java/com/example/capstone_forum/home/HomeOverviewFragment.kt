@@ -1,17 +1,21 @@
 package com.example.capstone_forum.home
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
+import com.example.capstone_forum.viewmodel.PostViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_make_post.*
 
 class HomeOverviewFragment : Fragment() {
+
+    private val postViewModel: PostViewModel by activityViewModels()
 
     private val posts = arrayListOf<Post>()
     private val homeFragmentAdapter = HomeOverviewAdapter(posts)
@@ -32,9 +36,32 @@ class HomeOverviewFragment : Fragment() {
     }
 
     private fun initViews() {
+        recyclerView()
+
         goToMakePost.setOnClickListener {
             (context as HomeActivity).showHomeMakePostFragment()
         }
+    }
+
+    private fun recyclerView() {
+        rvPosts.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = homeFragmentAdapter
+        }
+
+        dataInput()
+    }
+
+    private fun dataInput() {
+        postViewModel.getAllPosts()
+
+        postViewModel.posts.observe(viewLifecycleOwner) {
+            posts.clear()
+            posts.addAll(posts)
+            posts.sortBy { allPosts -> allPosts.timeCreated }
+        }
+
+        homeFragmentAdapter.notifyDataSetChanged()
     }
 
 }

@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ghostWhite">#DADADA</color>
     <color name="red">#DC0000</color>
+    <color name="gray">#A6A6A6</color>
 
     <color name="colorMainTheme">#3E8CFA</color>
     <color name="colorSecondaryTheme">#124DFB</color>

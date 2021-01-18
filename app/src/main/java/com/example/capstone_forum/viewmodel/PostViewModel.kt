@@ -20,6 +20,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
     val posts: LiveData<List<Post>> = postRepository.posts
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
+    val errorText: LiveData<String> get() = _errorText
 
     fun createPost(post: Post) {
         viewModelScope.launch {

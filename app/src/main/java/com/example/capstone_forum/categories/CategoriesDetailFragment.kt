@@ -1,4 +1,6 @@
 package com.example.capstone_forum.categories
 
-class CategoriesDetailFragment {
+import androidx.fragment.app.Fragment
+
+class CategoriesDetailFragment : Fragment() {
 }

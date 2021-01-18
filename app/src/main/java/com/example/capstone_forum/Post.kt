@@ -8,7 +8,7 @@ class Post(
     var title: String, var description: String, var likeRatio: Int
 ) : Parcelable, Comparable<Post> {
 
-    constructor() : this("", "", "", 0, "", "", 0)
+    constructor() : this("" , "", "", 0, "", "", 0)
 
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -21,6 +21,7 @@ class Post(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(category)
         parcel.writeString(creator)
         parcel.writeLong(timeCreated)

@@ -1,12 +1,14 @@
 package com.example.capstone_forum.home
 
-import android.app.Activity
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -15,16 +17,24 @@ import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
 import com.example.capstone_forum.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_make_post.*
+import kotlinx.android.synthetic.main.item_post_card.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 class HomeMakePostFragment : Fragment() {
 
     private val userViewModel: UserViewModel by activityViewModels()
     private val postViewModel: PostViewModel by activityViewModels()
 
-    private val spinnerList = arrayListOf("Soccer", "Cars", "Movies", "Computers")
+    private var username = ""
+
+    private val spinnerList =
+        arrayListOf("Soccer_fanatics", "Car_enthusiasts", "Movie_fans", "Computer_nerds")
 
     private var firebase: FirebaseAuth = FirebaseAuth.getInstance()
+    private var firebaseDB = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +49,19 @@ class HomeMakePostFragment : Fragment() {
         setHasOptionsMenu(true)
 
         initViews()
+        initUser()
+    }
+
+    private fun initUser() {
+        userViewModel.getUser(firebase.currentUser!!.uid)
+        userViewModel.user.observe(viewLifecycleOwner) {
+            username = it.firstName
+        }
     }
 
     private fun initViews() {
-        srCategory.adapter = ArrayAdapter<String>(requireContext(), R.layout.dropdown_spinner, spinnerList)
+        srCategory.adapter =
+            ArrayAdapter<String>(requireContext(), R.layout.dropdown_spinner, spinnerList)
 
         fabMakePost.setOnClickListener {
             if (inputValidation()) {
@@ -55,13 +74,21 @@ class HomeMakePostFragment : Fragment() {
     }
 
     private fun makePost() {
-        userViewModel.getUser(firebase.currentUser!!.uid)
+        val push = firebaseDB.child("posts").push()
 
-        userViewModel.user.observe(viewLifecycleOwner, Observer { user ->
-            postViewModel.post.observe(viewLifecycleOwner, Observer {
-                postViewModel.createPost(Post(it.id, srCategory.selectedItem.toString(), user.firstName, it.timeCreated, tiTitle.text.toString(), tiDescription.text.toString(), 0))
-            })
-        })
+        val newPost = Post(
+            push.key!!,
+            srCategory.selectedItem.toString(),
+            username,
+            System.currentTimeMillis(),
+            tiTitle.text.toString(),
+            tiDescription.text.toString(),
+            0
+        )
+
+        postViewModel.createPost(newPost)
+
+        push.setValue(newPost)
     }
 
     private fun inputValidation(): Boolean {

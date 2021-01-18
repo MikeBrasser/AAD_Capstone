@@ -36,10 +36,12 @@ class PostRepository {
                 val query = firebase.getReference("posts")
                 query.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val genericTypeIndicator: GenericTypeIndicator<List<Post>> =
-                            object : GenericTypeIndicator<List<Post>>() {}
+                        val genericTypeIndicator: GenericTypeIndicator<HashMap<String, Post>> =
+                            object : GenericTypeIndicator<HashMap<String, Post>>() {}
 
-                        _posts.value = snapshot.getValue(genericTypeIndicator)
+                        val posts = snapshot.getValue(genericTypeIndicator)!!
+
+                        _posts.value = posts.values.toMutableList()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
