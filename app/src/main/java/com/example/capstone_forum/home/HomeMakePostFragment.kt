@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.capstone_forum.Comment
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
@@ -39,6 +40,7 @@ class HomeMakePostFragment : Fragment() {
 
     private var username = ""
     private var uriGlobLink = ""
+    private var comments = arrayListOf<Comment>()
 
     private val spinnerList =
         arrayListOf("Soccer fanatics", "Car enthusiasts", "Movie fans", "Computer nerds")
@@ -143,9 +145,7 @@ class HomeMakePostFragment : Fragment() {
             System.currentTimeMillis(),
             tiTitle.text.toString(),
             tiDescription.text.toString(),
-            0, uriGlobLink
-
-            )
+            0, uriGlobLink, comments, hashMapOf())
 
         postViewModel.createPost(newPost)
 

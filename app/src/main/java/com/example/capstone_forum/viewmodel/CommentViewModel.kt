@@ -23,24 +23,12 @@ class CommentViewModel(application: Application) : AndroidViewModel(application)
     private val _errorText: MutableLiveData<String> = MutableLiveData()
     val errorText: LiveData<String> get() = _errorText
 
-    fun createComment(comment: Comment, post: Post) {
+    fun createComment(post: Post) {
         viewModelScope.launch {
             try {
-                commentRepository.createComment(comment, post)
+                commentRepository.createComment(post)
             } catch (exception: PostRepository.CreatePostError) {
                 val errorMessage = "Something went wrong while trying to create a comment"
-                Log.e(TAG, exception.message ?: errorMessage)
-                _errorText.value = errorMessage
-            }
-        }
-    }
-
-    fun getAllComments(post: Post) {
-        viewModelScope.launch {
-            try {
-                commentRepository.getAllComments(post)
-            } catch (exception: UserRepository.GetUserError) {
-                val errorMessage = "Something went wrong while trying to get all comments"
                 Log.e(TAG, exception.message ?: errorMessage)
                 _errorText.value = errorMessage
             }

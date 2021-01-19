@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeOverviewFragment : Fragment() {
 
     private val postViewModel: PostViewModel by activityViewModels()
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val posts = arrayListOf<Post>()
     private var homeFragmentAdapter = HomeOverviewAdapter(posts)
@@ -38,6 +40,8 @@ class HomeOverviewFragment : Fragment() {
 
     private fun initViews() {
         recyclerView()
+
+
 
         goToMakePost.setOnClickListener {
             (context as HomeActivity).showHomeMakePostFragment()

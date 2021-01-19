@@ -1,4 +1,4 @@
-package com.example.capstone_forum.home
+package com.example.capstone_forum.categories
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,18 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
-import com.example.capstone_forum.viewmodel.PostViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.item_post_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeOverviewAdapter(private val posts: List<Post>) :
-    RecyclerView.Adapter<HomeOverviewAdapter.ViewHolder>() {
+class CategoriesDetailAdapter(private val posts: List<Post>) :
+    RecyclerView.Adapter<CategoriesDetailAdapter.ViewHolder>() {
 
     private lateinit var context: Context
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -51,17 +49,17 @@ class HomeOverviewAdapter(private val posts: List<Post>) :
             itemView.tvLikeRatio.text = likeRatio.toString()
 
             itemView.upvoteBtn.setOnClickListener {
-                (context as HomeActivity).setLikeValue(true, post)
+                (context as CategoriesActivity).setLikeValue(true, post)
                 notifyDataSetChanged()
             }
 
             itemView.downvoteBtn.setOnClickListener {
-                (context as HomeActivity).setLikeValue(false, post)
+                (context as CategoriesActivity).setLikeValue(false, post)
                 notifyDataSetChanged()
             }
 
             itemView.setOnClickListener {
-                (itemView.context as HomeActivity).showHomeFragmentDetail(post)
+                (itemView.context as CategoriesActivity).showCategoriesFragmentDetailDetail(post)
             }
         }
 

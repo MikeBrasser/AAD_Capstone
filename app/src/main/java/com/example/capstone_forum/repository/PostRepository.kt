@@ -76,6 +76,20 @@ class PostRepository {
         }
     }
 
+    suspend fun updatePost(post: Post) {
+        try {
+            withTimeout(10_000) {
+                val query = firebase.getReference("posts/${post.id}")
+                query.setValue(post).addOnFailureListener {
+                    println("ERROR: " + it.message.toString())
+                }
+            }
+        } catch (exception: Exception) {
+            throw CreatePostError(exception.message.toString(), exception)
+        }
+    }
+
+    class SetLikedError(message: String, cause: Throwable) : Exception(message, cause) {}
     class CreatePostError(message: String, cause: Throwable) : Exception(message, cause) {}
     class GetAllPostsError(message: String, cause: Throwable) : Exception(message, cause) {}
     class GetPostError(message: String, cause: Throwable) : Exception(message, cause) {}

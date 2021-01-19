@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:text="@string/fullNameString"
+                android:text="@string/firstName"
                 android:layout_weight="0.9"
                 android:textStyle="bold"/>
 
@@ -58,38 +58,7 @@
             android:orientation="horizontal"
             android:layout_below="@id/tvComment"
             android:layout_marginTop="2dp"
-            android:gravity="end">
-
-            <ImageButton
-                android:id="@+id/upvoteBtnComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_upward"
-                android:contentDescription="@string/upvote"
-                android:background="@color/white"/>
-
-            <TextView
-                android:id="@+id/likeRatioComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholderNumber"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                />
-
-            <ImageButton
-                android:id="@+id/downvoteBtnComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_downward"
-                android:contentDescription="@string/downvote"
-                android:background="@color/white"/>
-
-
-
-        </LinearLayout>
+            android:gravity="end"/>
 
 
 

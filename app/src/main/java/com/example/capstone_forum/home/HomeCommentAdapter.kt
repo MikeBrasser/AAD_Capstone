@@ -24,7 +24,6 @@ class HomeCommentAdapter(private val comments: List<Comment>):
             itemView.tvUserComment.text = comment.creator
             itemView.tvPostedAtComment.text = dateReturn(comment.timeCreated)
             itemView.tvComment.text = comment.comment
-            itemView.likeRatioComment.text = comment.likeRatio.toString()
         }
 
         @SuppressLint("SimpleDateFormat")

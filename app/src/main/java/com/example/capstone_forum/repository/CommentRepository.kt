@@ -15,11 +15,11 @@ class CommentRepository {
     private val _comments: MutableLiveData<List<Comment>> = MutableLiveData()
     val comments: LiveData<List<Comment>> get() = _comments
 
-    suspend fun createComment(comment: Comment, post: Post) {
+    suspend fun createComment(post: Post) {
         try {
             withTimeout(10_000) {
-                val query = firebase.getReference("posts/${post.id}/${comment.id}")
-                query.setValue(comment).addOnFailureListener {
+                val query = firebase.getReference("posts/${post.id}/comments")
+                query.setValue(post.comments).addOnFailureListener {
                     println("ERROR: " + it.message.toString())
                 }
             }
@@ -28,32 +28,6 @@ class CommentRepository {
         }
     }
 
-    suspend fun getAllComments(post: Post) {
-        try {
-            withTimeout(10_000) {
-                val query = firebase.getReference("posts/${post.id}")
-                query.addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val genericTypeIndicator: GenericTypeIndicator<HashMap<String, HashMap<String, Comment>>> =
-                            object : GenericTypeIndicator<HashMap<String, HashMap<String, Comment>>>() {}
-
-                        val comments = snapshot.getValue(genericTypeIndicator)!!
-
-                        //TODO: FIX THIS
-//                        _comments.value = comments.values
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        println("ERROR: ${error.message}")
-                    }
-                })
-            }
-        } catch (exception: Exception) {
-            throw GetAllCommentsError(exception.message.toString(), exception)
-        }
-    }
-
     class CreateCommentError(message: String, cause: Throwable) : Exception(message, cause) {}
-    class GetAllCommentsError(message: String, cause: Throwable) : Exception(message, cause) {}
 
 }

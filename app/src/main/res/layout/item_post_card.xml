@@ -110,7 +110,7 @@
                 android:layout_marginStart="20dp">
 
                 <TextView
-                    android:id="@+id/numberComments"
+                    android:id="@+id/tvnumberComments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/placeholderNumber2"

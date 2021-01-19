@@ -21,13 +21,13 @@ class CategoriesDetailFragment(var categoryFilter: String) : Fragment() {
     private val postViewModel: PostViewModel by activityViewModels()
 
     private val posts = arrayListOf<Post>()
-    private var homeFragmentAdapter = HomeOverviewAdapter(posts)
+    private var categoriesDetailAdapter = CategoriesDetailAdapter(posts)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_post_detail, container, false)
+        return inflater.inflate(R.layout.fragment_categories_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,8 +40,8 @@ class CategoriesDetailFragment(var categoryFilter: String) : Fragment() {
 
     private fun initViews() {
         rvPostsFilter.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            adapter = homeFragmentAdapter
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            adapter = categoriesDetailAdapter
         }
 
         dataInput()
@@ -55,8 +55,7 @@ class CategoriesDetailFragment(var categoryFilter: String) : Fragment() {
             val filter = allPosts.filter { it.category == categoryFilter }
             posts.addAll(filter)
             posts.sortBy { allPostss -> allPostss.timeCreated }
-            homeFragmentAdapter.notifyDataSetChanged()
-
+            categoriesDetailAdapter.notifyDataSetChanged()
         }
     }
 

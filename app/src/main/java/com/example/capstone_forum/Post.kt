@@ -5,10 +5,11 @@ import android.os.Parcelable
 
 class Post(
     var id: String, var category: String, var creator: String, var timeCreated: Long,
-    var title: String, var description: String, var likeRatio: Int, var imageUrl: String?
+    var title: String, var description: String, var likeRatio: Int, var imageUrl: String?,
+    var comments: ArrayList<Comment>, var likedOrNot: HashMap<String, Boolean>
 ) : Parcelable, Comparable<Post> {
 
-    constructor() : this("" , "", "", 0, "", "", 0, "")
+    constructor() : this("" , "", "", 0, "", "", 0, "", arrayListOf(), hashMapOf())
 
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -18,8 +19,11 @@ class Post(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
-        parcel.readString()!!
-
+        parcel.readString()!!,
+        parcel.createTypedArrayList(Comment.CREATOR)!!,
+        hashMapOf<String, Boolean>().apply {
+            parcel.readHashMap(this.javaClass.classLoader)
+        }
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -31,6 +35,8 @@ class Post(
         parcel.writeString(description)
         parcel.writeInt(likeRatio)
         parcel.writeString(imageUrl)
+        parcel.writeTypedList(comments)
+        parcel.writeMap(likedOrNot)
     }
 
     override fun describeContents(): Int {
