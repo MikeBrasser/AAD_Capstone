@@ -93,8 +93,11 @@
                         android:textColor="@color/black"/>
 
                     <ImageView
+                        android:id="@+id/optionalImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_below="@id/tvPostDescription"
                         android:contentDescription="@string/optionalimage" />
 
@@ -103,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_below="@id/tvPostDescription"
+                        android:layout_below="@id/optionalImage"
                         android:layout_marginTop="5dp">
 
                         <ImageButton

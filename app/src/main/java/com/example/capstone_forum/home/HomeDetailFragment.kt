@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.capstone_forum.Comment
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
@@ -54,8 +56,7 @@ class HomeDetailFragment(var post: Post) : Fragment() {
         setHasOptionsMenu(true)
 
         initUser()
-        initViews()
-
+        dataInput()
     }
 
     private fun initUser() {
@@ -70,8 +71,6 @@ class HomeDetailFragment(var post: Post) : Fragment() {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = homeCommentAdapter
         }
-
-        dataInput()
 
         upvoteBtn.setOnClickListener {
             (context as HomeActivity).setLikeValue(true, post)
@@ -97,6 +96,11 @@ class HomeDetailFragment(var post: Post) : Fragment() {
                 tvPostTitle.text = post.title
                 tvPostDescription.text = post.description
                 tvNumberComments.text = post.comments.size.toString()
+                Glide.with(requireActivity().applicationContext).load(post.imageUrl).into(optionalImage)
+
+                if (post.imageUrl?.isEmpty() == false) {
+                    optionalImage.isVisible = true
+                }
 
                 val liked = post.likedOrNot[firebaseAuth.currentUser!!.uid]
                 if (liked != null) {
@@ -121,6 +125,7 @@ class HomeDetailFragment(var post: Post) : Fragment() {
                 comments.sortBy { allPostss -> allPostss.timeCreated }
                 homeCommentAdapter.notifyDataSetChanged()
             }
+            initViews()
         })
     }
 

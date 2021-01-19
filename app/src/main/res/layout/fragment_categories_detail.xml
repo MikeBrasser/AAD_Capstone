@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
 
                 <SearchView
-                    android:id="@+id/searchWindow"
+                    android:id="@+id/searchWindowCat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.66"
@@ -37,7 +37,7 @@
                     android:queryHint="Search" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/pickDate"
+                    android:id="@+id/pickDateCat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

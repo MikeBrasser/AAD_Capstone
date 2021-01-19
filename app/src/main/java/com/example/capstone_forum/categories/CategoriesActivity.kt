@@ -65,7 +65,7 @@ class CategoriesActivity : AppCompatActivity() {
     fun showCategoriesDetail(filter: String) {
         categoriesDetailFragment = CategoriesDetailFragment(filter)
 
-        supportActionBar?.title = "Category"
+        supportActionBar?.title = filter
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bottom_nav_categories.visibility = View.VISIBLE

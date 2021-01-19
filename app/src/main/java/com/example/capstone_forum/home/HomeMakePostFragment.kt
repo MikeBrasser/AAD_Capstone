@@ -3,7 +3,6 @@ package com.example.capstone_forum.home
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -11,10 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.capstone_forum.Comment
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
@@ -25,9 +22,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_make_post.*
-import kotlinx.android.synthetic.main.item_post_card.*
-import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 
 class HomeMakePostFragment : Fragment() {
@@ -104,10 +98,6 @@ class HomeMakePostFragment : Fragment() {
             }
         }
     }
-
-//    private fun saveImage() {
-//        userViewModel.updateUser(firebaseUser!!.uid, currentUser)
-//    }
 
     private fun pickFromGallery() {
         val intent = Intent()

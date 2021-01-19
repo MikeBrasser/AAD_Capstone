@@ -23,12 +23,14 @@
             android:id="@+id/okey">
 
             <TextView
-                android:id="@+id/tvCategoryPost"
+                android:id="@+id/tvPostTitle"
+                android:textSize="21sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:text="@string/placeholderTitle"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/black"
-                android:text="@string/placeholderCategory"
+                android:textStyle="bold"
                 android:layout_weight="0.9"/>
 
             <TextView
@@ -43,37 +45,17 @@
         <TextView
             android:id="@+id/tvPostedBy"
             android:textSize="15sp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholderPostedBy"
-            android:layout_below="@id/okey"/>
-
-        <View
-            android:id="@+id/separationLine"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="3dp"
-            android:layout_below="@+id/tvPostedBy"
-            android:background="@color/black"/>
-
-        <TextView
-            android:id="@+id/tvPostTitle"
-            android:textSize="19sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/placeholderTitle"
-            android:layout_below="@id/separationLine"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-
-
+            android:layout_below="@id/okey"
+            android:gravity="end"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/tvPostTitle"
+            android:layout_below="@id/tvPostedBy"
             android:layout_marginTop="5dp">
 
             <ImageButton

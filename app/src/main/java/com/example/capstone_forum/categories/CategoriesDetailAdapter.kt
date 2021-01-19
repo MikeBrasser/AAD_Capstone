@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_post_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CategoriesDetailAdapter(private val posts: List<Post>) :
+class CategoriesDetailAdapter(private var posts: List<Post>) :
     RecyclerView.Adapter<CategoriesDetailAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -23,7 +23,6 @@ class CategoriesDetailAdapter(private val posts: List<Post>) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun init(post: Post) {
-            itemView.tvCategoryPost.text = post.category
             itemView.tvCreatedAt.text = dateReturn(post.timeCreated)
             itemView.tvPostTitle.text = post.title
             itemView.tvPostedBy.text = context.getString(R.string.posted_by_s, post.creator)
@@ -76,7 +75,7 @@ class CategoriesDetailAdapter(private val posts: List<Post>) :
         context = parent.context
         return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_post_card, parent, false)
+                .inflate(R.layout.item_post_card_category, parent, false)
         )
     }
 
@@ -86,6 +85,11 @@ class CategoriesDetailAdapter(private val posts: List<Post>) :
 
     override fun getItemCount(): Int {
         return posts.size
+    }
+
+    fun updateList(updatedList: ArrayList<Post>) {
+        posts = updatedList
+        notifyDataSetChanged()
     }
 
 }

@@ -6,17 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
-import com.example.capstone_forum.viewmodel.PostViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.item_post_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeOverviewAdapter(private val posts: List<Post>) :
+class HomeOverviewAdapter(private var posts: List<Post>) :
     RecyclerView.Adapter<HomeOverviewAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -30,7 +28,6 @@ class HomeOverviewAdapter(private val posts: List<Post>) :
             itemView.tvPostTitle.text = post.title
             itemView.tvPostedBy.text = context.getString(R.string.posted_by_s, post.creator)
             itemView.tvnumberComments.text = post.comments.size.toString()
-
 
             val liked = post.likedOrNot[firebaseAuth.currentUser!!.uid]
             if (liked != null) {
@@ -88,6 +85,11 @@ class HomeOverviewAdapter(private val posts: List<Post>) :
 
     override fun getItemCount(): Int {
         return posts.size
+    }
+
+    fun updateList(updatedList: ArrayList<Post>) {
+        posts = updatedList
+        notifyDataSetChanged()
     }
 
 }
