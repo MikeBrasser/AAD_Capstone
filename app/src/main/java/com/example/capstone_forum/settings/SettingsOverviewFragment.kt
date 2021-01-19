@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.capstone_forum.R
 import com.example.capstone_forum.account.AccountActivity
+import com.example.capstone_forum.categories.CategoriesActivity
 import com.example.capstone_forum.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_settings_overview.*
@@ -43,6 +44,10 @@ class SettingsOverviewFragment : Fragment() {
         userViewModel.user.observe(viewLifecycleOwner) {
             fullName.text = getString(R.string.fullNameString, it.firstName, it.lastName)
             fullName.isVisible = true
+        }
+
+        infoBtn.setOnClickListener {
+            (context as SettingsActivity).showInfoFragment()
         }
 
         logOutBtn.setOnClickListener {

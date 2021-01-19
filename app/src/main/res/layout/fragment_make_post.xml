@@ -55,7 +55,11 @@
                 android:id="@+id/imagePhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/imagephoto" />
+                android:layout_margin="5dp"
+                android:contentDescription="@string/imagephoto"
+                android:maxHeight="200dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/srCategory"

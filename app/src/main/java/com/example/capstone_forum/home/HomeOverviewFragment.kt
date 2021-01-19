@@ -14,15 +14,16 @@ import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.PostViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeOverviewFragment : Fragment() {
+class HomeOverviewFragment() : Fragment() {
 
     private val postViewModel: PostViewModel by activityViewModels()
 
-    private val posts = arrayListOf<Post>()
+    private var posts = arrayListOf<Post>()
     private var homeFragmentAdapter = HomeOverviewAdapter(posts)
 
     override fun onCreateView(
@@ -42,6 +43,7 @@ class HomeOverviewFragment : Fragment() {
 
     private fun initViews() {
         recyclerView()
+        searchView()
 
         pickDate.setOnClickListener {
             datePicker()
@@ -67,11 +69,9 @@ class HomeOverviewFragment : Fragment() {
         postViewModel.posts.observe(viewLifecycleOwner) { allPosts ->
             posts.clear()
             posts.addAll(allPosts)
-            posts.sortBy { allPostss -> allPostss.timeCreated }
+            posts.sortByDescending { sorter -> sorter.timeCreated }
             homeFragmentAdapter.notifyDataSetChanged()
         }
-
-        searchView()
     }
 
     private fun datePicker() {

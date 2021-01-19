@@ -12,12 +12,6 @@
         android:title="@string/menu_categories" />
 
     <item
-        android:id="@+id/notifications"
-        android:enabled="true"
-        android:icon="@drawable/ic_notifications"
-        android:title="@string/menu_notifications" />
-
-    <item
         android:id="@+id/settings"
         android:enabled="true"
         android:icon="@drawable/ic_settings"

@@ -10,11 +10,9 @@ import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
 import com.example.capstone_forum.home.HomeActivity
 import com.example.capstone_forum.home.HomeDetailFragment
-import com.example.capstone_forum.notifications.NotificationsActivity
 import com.example.capstone_forum.settings.SettingsActivity
 import com.example.capstone_forum.viewmodel.PostViewModel
 import kotlinx.android.synthetic.main.activity_categories.*
-import kotlinx.android.synthetic.main.activity_home.*
 
 class CategoriesActivity : AppCompatActivity() {
 
@@ -104,7 +102,6 @@ class CategoriesActivity : AppCompatActivity() {
             when (it.toString()) {
                 "Home" -> startActivity(Intent(this, HomeActivity::class.java))
                 "Categories" -> startActivity(Intent(this, CategoriesActivity::class.java))
-                "Notifications" -> startActivity(Intent(this, NotificationsActivity::class.java))
                 "Settings" -> startActivity(Intent(this, SettingsActivity::class.java))
             }
 

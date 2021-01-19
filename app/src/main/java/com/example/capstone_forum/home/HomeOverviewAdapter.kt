@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone_forum.Post
 import com.example.capstone_forum.R
@@ -33,10 +34,10 @@ class HomeOverviewAdapter(private var posts: List<Post>) :
             if (liked != null) {
                 if (liked == true) {
                     itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.orange))
-                    itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.black))
+                    itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.default_color))
                 } else if (liked == false) {
                     itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.blue))
-                    itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.black))
+                    itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.default_color))
                 }
             }
 

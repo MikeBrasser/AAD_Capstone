@@ -61,6 +61,18 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun deletePost(postID: String) {
+        viewModelScope.launch {
+            try {
+                postRepository.deletePost(postID)
+            } catch (exception: PostRepository.DeletePostError){
+                val errorMessage = "Something went wrong while trying to delete a post"
+                Log.e(TAG, exception.message ?: errorMessage)
+                _errorText.value = errorMessage
+            }
+        }
+    }
+
     fun setLiked(liked: Boolean, post: Post) {
         viewModelScope.launch {
             try {

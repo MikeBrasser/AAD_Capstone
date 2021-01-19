@@ -33,10 +33,10 @@ class CategoriesDetailAdapter(private var posts: List<Post>) :
             if (liked != null) {
                 if (liked == true) {
                     itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.orange))
-                    itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.black))
+                    itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.default_color))
                 } else if (liked == false) {
                     itemView.downvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.blue))
-                    itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.black))
+                    itemView.upvoteBtn.setColorFilter(ContextCompat.getColor(context, R.color.default_color))
                 }
             }
 

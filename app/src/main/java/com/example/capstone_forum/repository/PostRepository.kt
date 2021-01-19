@@ -76,6 +76,19 @@ class PostRepository {
         }
     }
 
+    suspend fun deletePost(postID: String) {
+        try {
+            withTimeout(10_000) {
+                val query = firebase.getReference("posts/$postID")
+                query.removeValue().addOnFailureListener {
+                    println("ERROR: " + it.message.toString())
+                }
+            }
+        } catch (exception: Exception) {
+            throw DeletePostError(exception.message.toString(), exception)
+        }
+    }
+
     suspend fun updatePost(post: Post) {
         try {
             withTimeout(10_000) {
@@ -91,6 +104,7 @@ class PostRepository {
 
     class SetLikedError(message: String, cause: Throwable) : Exception(message, cause) {}
     class CreatePostError(message: String, cause: Throwable) : Exception(message, cause) {}
+    class DeletePostError(message: String, cause: Throwable) : Exception(message, cause) {}
     class GetAllPostsError(message: String, cause: Throwable) : Exception(message, cause) {}
     class GetPostError(message: String, cause: Throwable) : Exception(message, cause) {}
 

@@ -22,6 +22,7 @@ import com.example.capstone_forum.R
 import com.example.capstone_forum.viewmodel.CommentViewModel
 import com.example.capstone_forum.viewmodel.PostViewModel
 import com.example.capstone_forum.viewmodel.UserViewModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -36,7 +37,6 @@ class HomeDetailFragment(var post: Post) : Fragment() {
     private val postViewModel: PostViewModel by activityViewModels()
     private val commentViewModel: CommentViewModel by activityViewModels()
     private var username = ""
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private var firebase: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -54,6 +54,10 @@ class HomeDetailFragment(var post: Post) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().title = "Home detail"
         setHasOptionsMenu(true)
+
+//        if (firebase.currentUser!!.uid == post.creatorID) {
+//            tvDeletePost.isVisible = true
+//        }
 
         initUser()
         dataInput()
@@ -83,12 +87,18 @@ class HomeDetailFragment(var post: Post) : Fragment() {
         commentBtn.setOnClickListener {
             createComment()
         }
+
+        tvDeletePost.setOnClickListener {
+            deletePost()
+        }
     }
+
 
     private fun dataInput() {
         postViewModel.getPost(post.id)
         postViewModel.post.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 
+            println(it.id)
             if (post.id == it.id) {
                 tvCategoryPost.text = post.category
                 tvPostedBy.text = getString(R.string.posted_by_s, post.creator)
@@ -96,20 +106,41 @@ class HomeDetailFragment(var post: Post) : Fragment() {
                 tvPostTitle.text = post.title
                 tvPostDescription.text = post.description
                 tvNumberComments.text = post.comments.size.toString()
-                Glide.with(requireActivity().applicationContext).load(post.imageUrl).into(optionalImage)
+                Glide.with(requireActivity().applicationContext).load(post.imageUrl)
+                    .into(optionalImage)
 
                 if (post.imageUrl?.isEmpty() == false) {
                     optionalImage.isVisible = true
                 }
 
-                val liked = post.likedOrNot[firebaseAuth.currentUser!!.uid]
+                val liked = post.likedOrNot[firebase.currentUser!!.uid]
                 if (liked != null) {
                     if (liked == true) {
-                        upvoteBtn.setColorFilter(ContextCompat.getColor(requireContext(), R.color.orange))
-                        downvoteBtn.setColorFilter(ContextCompat.getColor(requireContext(), R.color.black))
+                        upvoteBtn.setColorFilter(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.orange
+                            )
+                        )
+                        downvoteBtn.setColorFilter(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.default_color
+                            )
+                        )
                     } else if (liked == false) {
-                        downvoteBtn.setColorFilter(ContextCompat.getColor(requireContext(), R.color.blue))
-                        upvoteBtn.setColorFilter(ContextCompat.getColor(requireContext(), R.color.black))
+                        downvoteBtn.setColorFilter(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.blue
+                            )
+                        )
+                        upvoteBtn.setColorFilter(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.default_color
+                            )
+                        )
                     }
                 }
 
@@ -130,7 +161,8 @@ class HomeDetailFragment(var post: Post) : Fragment() {
     }
 
     private fun createComment() {
-        val newComment = Comment(username, System.currentTimeMillis(), addCommentInput.text.toString())
+        val newComment =
+            Comment(username, System.currentTimeMillis(), addCommentInput.text.toString())
 
         post.comments.add(newComment)
 
@@ -138,6 +170,12 @@ class HomeDetailFragment(var post: Post) : Fragment() {
 
         addCommentInput.text.clear()
         hideKeyboard()
+    }
+
+    private fun deletePost() {
+        (context as HomeActivity).showHomeFragment()
+
+        postViewModel.deletePost(post.id)
     }
 
     private fun hideKeyboard() {

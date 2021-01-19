@@ -4,21 +4,28 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Post(
-    var id: String, var category: String, var creator: String, var timeCreated: Long,
-    var title: String, var description: String, var likeRatio: Int, var imageUrl: String?,
-    var comments: ArrayList<Comment>, var likedOrNot: HashMap<String, Boolean>
+    var id: String,
+    var category: String,
+    var creator: String,
+    var creatorID: String,
+    var timeCreated: Long,
+    var title: String,
+    var description: String,
+    var imageUrl: String?,
+    var comments: ArrayList<Comment>,
+    var likedOrNot: HashMap<String, Boolean>
 ) : Parcelable, Comparable<Post> {
 
-    constructor() : this("" , "", "", 0, "", "", 0, "", arrayListOf(), hashMapOf())
+    constructor() : this("", "", "", "", 0, "", "", "", arrayListOf(), hashMapOf())
 
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readLong(),
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readInt(),
         parcel.readString()!!,
         parcel.createTypedArrayList(Comment.CREATOR)!!,
         hashMapOf<String, Boolean>().apply {
@@ -30,10 +37,10 @@ class Post(
         parcel.writeString(id)
         parcel.writeString(category)
         parcel.writeString(creator)
+        parcel.writeString(creatorID)
         parcel.writeLong(timeCreated)
         parcel.writeString(title)
         parcel.writeString(description)
-        parcel.writeInt(likeRatio)
         parcel.writeString(imageUrl)
         parcel.writeTypedList(comments)
         parcel.writeMap(likedOrNot)

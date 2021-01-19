@@ -35,7 +35,7 @@
     <string name="add_a_comment">Add a comment</string>
     <string name="enter">Enter</string>
     <string name="already_have_an_account_log_in_now">Already have an account? Login instead</string>
-    <string name="button_info">info</string>
+    <string name="button_info">About this app</string>
     <string name="logged_in_as">Logged in as:</string>
     <string name="fullNameString">%s %s</string>
     <string name="logout_btn">Log out</string>
@@ -54,5 +54,7 @@
     <string name="imagephoto">imagePhoto</string>
     <string name="placeholderDescription">Some description</string>
     <string name="optionalimage">optionalImage</string>
+    <string name="aboutapp">This app is made specifically for the AAD Capstone project. This is suppose to be a platform to communicate via posts. A bit like reddit. App made by: Mike Brasser 500780967</string>
+    <string name="delete_post">delete post</string>
 
 </resources>

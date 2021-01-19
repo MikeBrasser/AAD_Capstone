@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capstone_forum.categories.CategoriesActivity
 import com.example.capstone_forum.home.HomeActivity
-import com.example.capstone_forum.notifications.NotificationsActivity
 import com.example.capstone_forum.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             when (it.toString()) {
                 "Home" -> startActivity(Intent(this, HomeActivity::class.java))
                 "Categories" -> startActivity(Intent(this, CategoriesActivity::class.java))
-                "Notifications" -> startActivity(Intent(this, NotificationsActivity::class.java))
                 "Settings" -> startActivity(Intent(this, SettingsActivity::class.java))
             }
 

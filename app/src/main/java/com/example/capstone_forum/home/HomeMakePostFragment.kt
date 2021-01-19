@@ -90,7 +90,6 @@ class HomeMakePostFragment : Fragment() {
         reference.putFile(uri).addOnSuccessListener {
             reference.downloadUrl.addOnSuccessListener { uriLink ->
                 postViewModel.post.observe(viewLifecycleOwner) {
-                    it.imageUrl = uriLink.toString()
                     uriGlobLink = uriLink.toString()
                 }
 
@@ -132,10 +131,11 @@ class HomeMakePostFragment : Fragment() {
             push.key!!,
             srCategory.selectedItem.toString(),
             username,
+            firebase.currentUser!!.uid,
             System.currentTimeMillis(),
             tiTitle.text.toString(),
-            tiDescription.text.toString(),
-            0, uriGlobLink, comments, hashMapOf())
+            tiDescription.text.toString(), uriGlobLink, comments, hashMapOf()
+        )
 
         postViewModel.createPost(newPost)
 
